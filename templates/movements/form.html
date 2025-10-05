@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Inventory Management{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>{{ title }}</h2>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.product_id.label(class="form-label") }}
+                {{ form.product_id(class="form-select") }}
+                {% if form.product_id.errors %}
+                    <div class="text-danger">
+                        {% for error in form.product_id.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.from_location_id.label(class="form-label") }}
+                {{ form.from_location_id(class="form-select") }}
+                {% if form.from_location_id.errors %}
+                    <div class="text-danger">
+                        {% for error in form.from_location_id.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.to_location_id.label(class="form-label") }}
+                {{ form.to_location_id(class="form-select") }}
+                {% if form.to_location_id.errors %}
+                    <div class="text-danger">
+                        {% for error in form.to_location_id.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                {{ form.qty.label(class="form-label") }}
+                {{ form.qty(class="form-control") }}
+                {% if form.qty.errors %}
+                    <div class="text-danger">
+                        {% for error in form.qty.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="{{ url_for('movements') }}" class="btn btn-secondary">Cancel</a>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

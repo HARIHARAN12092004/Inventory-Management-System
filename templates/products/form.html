@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} - Inventory Management{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-light">
+                <h2 class="card-title mb-0">
+                    {% if 'Add' in title %}
+                    <i class="fas fa-plus-circle me-2 text-success"></i>
+                    {% else %}
+                    <i class="fas fa-edit me-2 text-primary"></i>
+                    {% endif %}
+                    {{ title }}
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('new_product') if 'Add' in title else url_for('edit_product', product_id=form._obj.product_id) }}" class="needs-validation" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            {{ form.name.label(class="form-label fw-bold") }}
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else ""), placeholder="Enter product name") }}
+                            </div>
+                            {% if form.name.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.name.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="text-muted">Product name should be unique and descriptive</small>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            {{ form.sku.label(class="form-label fw-bold") }}
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-barcode"></i></span>
+                                {{ form.sku(class="form-control" + (" is-invalid" if form.sku.errors else ""), placeholder="Enter SKU code") }}
+                            </div>
+                            {% if form.sku.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.sku.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="text-muted">Unique identifier for inventory tracking</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.price.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            {{ form.price(class="form-control" + (" is-invalid" if form.price.errors else ""), placeholder="0.00") }}
+                        </div>
+                        {% if form.price.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.price.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="text-muted">Unit price of the product</small>
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.description.label(class="form-label fw-bold") }}
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-align-left"></i></span>
+                            {{ form.description(class="form-control" + (" is-invalid" if form.description.errors else ""), rows=4, placeholder="Enter product description") }}
+                        </div>
+                        {% if form.description.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.description.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="text-muted">Detailed description of the product</small>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{{ url_for('products') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Save Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

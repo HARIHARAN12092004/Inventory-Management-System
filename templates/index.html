@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="page-title display-4">Inventory Management System</h1>
+    <p class="lead text-muted">Efficiently track and manage your inventory across multiple locations</p>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card bg-gradient bg-primary text-white mb-4">
+            <div class="card-body p-4">
+                <h2 class="card-title"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h2>
+                <p class="card-text">Welcome to your inventory management dashboard. Quickly access all features from this central hub.</p>
+                <p>Use the cards below to navigate to different sections of the system.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-light mb-4">
+            <div class="card-body p-4 text-center">
+                <h3 class="card-title"><i class="fas fa-chart-line me-2"></i>Quick Stats</h3>
+                <div class="d-flex justify-content-around mt-4">
+                    <div class="text-center">
+                        <div class="h2 mb-0 font-weight-bold">{{ products_count if products_count is defined else '?' }}</div>
+                        <small class="text-muted">Products</small>
+                    </div>
+                    <div class="text-center">
+                        <div class="h2 mb-0 font-weight-bold">{{ locations_count if locations_count is defined else '?' }}</div>
+                        <small class="text-muted">Locations</small>
+                    </div>
+                    <div class="text-center">
+                        <div class="h2 mb-0 font-weight-bold">{{ movements_count if movements_count is defined else '?' }}</div>
+                        <small class="text-muted">Movements</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0"><i class="fas fa-box me-2"></i>Products</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Manage your product catalog, add new products, update existing ones, and track inventory levels.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Add and edit product details</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Track product quantities</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>View product history</li>
+                </ul>
+            </div>
+            <div class="card-footer bg-white border-0 text-center">
+                <a href="{{ url_for('products') }}" class="btn btn-primary"><i class="fas fa-arrow-right me-2"></i>Manage Products</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0"><i class="fas fa-map-marker-alt me-2"></i>Locations</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Set up and manage your warehouse locations, storage areas, and distribution centers.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Create location hierarchies</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Assign location types</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Monitor location capacity</li>
+                </ul>
+            </div>
+            <div class="card-footer bg-white border-0 text-center">
+                <a href="{{ url_for('locations') }}" class="btn btn-primary"><i class="fas fa-arrow-right me-2"></i>Manage Locations</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="card-title mb-0"><i class="fas fa-exchange-alt me-2"></i>Movements</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Record and track product movements between different locations in your inventory system.</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Transfer products between locations</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Record incoming and outgoing stock</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>View movement history</li>
+                </ul>
+            </div>
+            <div class="card-footer bg-white border-0 text-center">
+                <a href="{{ url_for('movements') }}" class="btn btn-primary"><i class="fas fa-arrow-right me-2"></i>Manage Movements</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0"><i class="fas fa-chart-bar me-2"></i>Inventory Report</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Get a comprehensive view of your current inventory levels across all locations. Generate reports to analyze stock levels, movements, and identify potential issues.</p>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-chart-pie text-primary me-2"></i>View inventory distribution by location</li>
+                            <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Identify low stock items</li>
+                            <li><i class="fas fa-history text-info me-2"></i>Track inventory changes over time</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <a href="{{ url_for('report') }}" class="btn btn-success btn-lg"><i class="fas fa-file-alt me-2"></i>View Full Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
