@@ -180,3 +180,12 @@ To reset the database with fresh sample data:
 python scripts\reset_db.py
 ```
 ## Screenshots
+<img width="1599" height="808" alt="Screenshot 2025-10-05 152822" src="https://github.com/user-attachments/assets/232fdcdf-233c-4677-aabd-8edc4caa2786" />
+<img width="1594" height="804" alt="Screenshot 2025-10-05 152839" src="https://github.com/user-attachments/assets/d947430b-88a6-45dd-9166-42c3262badf4" />
+<img width="1596" height="817" alt="Screenshot 2025-10-05 152854" src="https://github.com/user-attachments/assets/1d9f48ae-1e27-4171-9c0e-1f8df8188daa" />
+<img width="1599" height="812" alt="Screenshot 2025-10-05 152909" src="https://github.com/user-attachments/assets/8b2bd8c7-7b22-44ba-9375-8fcfb3413c87" />
+<img width="1599" height="808" alt="Screenshot 2025-10-05 152923" src="https://github.com/user-attachments/assets/68de69f8-c019-4ce9-91ce-e0b6cb49d53a" />
+
+
+
+
